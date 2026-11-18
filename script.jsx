@@ -121,7 +121,7 @@ export function Board() {
           aria-labelledby="title"
         >
           <form onSubmit={(e) => handleNameSubmit(e)}>
-            <h2 id="title">Player's names</h2>
+            <h2 id="title">Player names</h2>
             <div className="player-field">
               <label htmlFor="nameX">Player X</label>
               <input
