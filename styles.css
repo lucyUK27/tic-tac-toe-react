@@ -1,0 +1,235 @@
+* {
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  background-color: #f2efe9;
+  margin: 0;
+  padding: 0;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  background-color: rgba(93, 95, 96, 0.5);
+  z-index: 100;
+  place-items: center;
+}
+.modal form {
+  background-color: #faf8f5;
+  width: 90%;
+  max-width: 360px;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  box-sizing: border-box;
+}
+.player-field {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  gap: 4px;
+  text-align: left;
+}
+label {
+  font-size: 14px;
+  font-weight: 500;
+}
+.player-field input {
+  border-radius: 8px;
+  border: 1px solid #656363;
+  font-size: 18px;
+  color: #4a4a4a;
+  padding: 5px 0 5px 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#start-game {
+  width: 130px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: rgb(79, 79, 231);
+  color: #fff;
+  border: none;
+}
+#start-game:hover {
+  background-color: rgb(56, 56, 170);
+}
+h1 {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 500;
+  font-size: 44px;
+  margin-bottom: 0;
+}
+h2 {
+  font-size: 28px;
+  margin-bottom: 0;
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 88px);
+  grid-template-rows: repeat(3, 88px);
+  gap: 8px;
+  justify-content: center;
+  position: relative;
+  width: 280px;
+  margin-inline: auto;
+}
+
+.scoreboard {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 0;
+  font-size: 14px;
+}
+
+.container {
+  margin-top: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
+  max-width: 460px;
+  text-align: center;
+  flex-wrap: wrap;
+  background-color: #faf8f5;
+  padding: 10px 0 20px 0;
+  border-radius: 15px;
+}
+.square {
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  font-size: 44px;
+  background: #f3f1f1;
+  border: 1px solid #4a4a4a;
+  cursor: pointer;
+  border-radius: 10px;
+}
+#reset {
+  width: 130px;
+  margin-top: 25px;
+  height: 50px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: rgb(79, 79, 231);
+  color: #fff;
+  border: none;
+}
+#reset:hover {
+  background-color: rgb(56, 56, 170);
+}
+.square:hover {
+  cursor: pointer;
+  background: #dbe8f1;
+}
+
+.winning-square {
+  background-color: rgb(114, 114, 119);
+  color: #fff;
+}
+.winning-square:hover {
+  background-color: rgb(114, 114, 119);
+}
+
+.win-line {
+  position: absolute;
+  width: 69%;
+  height: 5px;
+  left: 15.5%;
+  top: 50%;
+  background: #2b211e;
+  border-radius: 5px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+/*Горизонталі*/
+div[data-line="0-1-2"] {
+  top: 15.5%;
+}
+div[data-line="6-7-8"] {
+  top: 84.5%;
+}
+/*Вертикалі*/
+div[data-line="0-3-6"] {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  left: 15.5%;
+}
+div[data-line="1-4-7"] {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  left: 50%;
+}
+div[data-line="2-5-8"] {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  left: 84.5%;
+}
+/*діагоналі*/
+div[data-line="0-4-8"] {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: 50%;
+  width: 100%;
+}
+div[data-line="2-4-6"] {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  left: 50%;
+  width: 100%;
+}
+.mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mark-x {
+  color: #d98a6c;
+}
+.mark-o {
+  color: #84a59d;
+}
+
+.mark-x line {
+  stroke-dasharray: 64;
+  stroke-dashoffset: 64;
+  animation: draw 0.35s ease forwards;
+}
+.mark-x line:nth-of-type(2) {
+  animation-delay: 0.35s;
+}
+@keyframes draw {
+  from {
+    stroke-dashoffset: 64;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.mark-o circle {
+  stroke-dasharray: 139;
+  stroke-dashoffset: 139;
+  animation: circle 0.35s ease forwards;
+}
+@keyframes circle {
+  from {
+    stroke-dashoffset: 139;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
